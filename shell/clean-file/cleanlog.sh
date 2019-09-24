@@ -11,6 +11,7 @@ for wdir in $(cat $WORKLIST)
 	# delete all file that modified 10 days ago or bigger than 100MB
 	find $wdir -type f -mtime +10| xargs rm -f
 	find $wdir -type f -size +100M| xargs rm -f
+	find $wdir -maxdepth 1 -type d -mtime +60|xargs rm -rf
 	echo clean after $(du -sh $wdir)
 done
 echo clean file end
