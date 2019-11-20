@@ -20,11 +20,13 @@ read -n 1 -p "Deploy "${2}" now? Y/n: " deploy_now
 do
     case $deploy_now in
         [yY])
+            echo "\nDeploying..."
             #package image
             python ${BASE_DIR}${DEPLOY_DIR}${dirs[$LANG]}"/"${BUILD_FILE}
 
             #build docker image
             cd /home/opt/env_scripts/composefiles && docker-compose -f $LANG.compose.yml up -d --build
+            break
             ;;
 
         [nN])
