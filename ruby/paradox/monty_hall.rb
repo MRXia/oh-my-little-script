@@ -1,8 +1,9 @@
+# Monty Hall problem
 doors = (0..2).to_a
 switch_wins, stay_wins = 0, 0
 loop_count = ARGV[0]&.to_i || 10000
 
-raise "fault loop count for #{loop_count}" if loop_count <= 0
+raise "loop count fault for #{loop_count}" if loop_count <= 0
 
 (1..loop_count).each do
   random = Random.new
